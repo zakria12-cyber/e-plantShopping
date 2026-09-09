@@ -25,35 +25,35 @@ const plants = [
 function ProductList() {
   const dispatch = useDispatch();
   const cartItems = useSelector((state) => state.cart.items);
+  const cartQuantity = cartItems.reduce((total, item) => total + item.quantity, 0);
   const categories = ["Air Purifying", "Succulents", "Tropical Plants"];
 
   return (
     <section className="products">
-      <h2>Our Plant Collection</h2>
-
+      <div className="product-navbar">
+        <h2>Paradise Nursery Plants</h2>
+        <div className="cart-indicator">🛒 Cart ({cartQuantity})</div>
+      </div>
       {categories.map((category) => (
         <div key={category}>
           <h3 className="category-title">{category}</h3>
           <div className="plant-grid">
-            {plants
-              .filter((plant) => plant.category === category)
-              .map((plant) => {
-                const inCart = cartItems.some((item) => item.id === plant.id);
-
-                return (
-                  <div className="plant-card" key={plant.id}>
-                    <img src={plant.image} alt={plant.name} />
-                    <h3>{plant.name}</h3>
-                    <p>${plant.price}</p>
-                    <button
-                      disabled={inCart}
-                      onClick={() => dispatch(addItem(plant))}
-                    >
-                      {inCart ? "Added to Cart" : "Add to Cart"}
-                    </button>
-                  </div>
-                );
-              })}
+            {plants.filter((plant) => plant.category === category).map((plant) => {
+              const cartItem = cartItems.find((item) => item.id === plant.id);
+              return (
+                <div className="plant-card" key={plant.id}>
+                  <img src={plant.image} alt={plant.name} />
+                  <h3>{plant.name}</h3>
+                  <p>${plant.price}</p>
+                  <button
+                    disabled={Boolean(cartItem)}
+                    onClick={() => dispatch(addItem(plant))}
+                  >
+                    {cartItem ? `Added (${cartItem.quantity})` : "Add to Cart"}
+                  </button>
+                </div>
+              );
+            })}
           </div>
         </div>
       ))}
