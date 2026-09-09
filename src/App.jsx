@@ -6,7 +6,6 @@ import AboutUs from "./AboutUs";
 
 function App() {
   const [page, setPage] = useState("home");
-
   const cartItems = useSelector((state) => state.cart.items);
 
   const cartCount = cartItems.reduce(
@@ -14,53 +13,51 @@ function App() {
     0
   );
 
+  const renderPage = () => {
+    if (page === "plants") {
+      return <ProductList />;
+    }
+
+    if (page === "cart") {
+      return <CartItem />;
+    }
+
+    return (
+      <>
+        <section className="hero">
+          <div className="hero-content">
+            <h2>Paradise Nursery</h2>
+            <p>
+              Discover beautiful plants and bring the freshness of nature into
+              your home.
+            </p>
+            <button className="get-started" onClick={() => setPage("plants")}>
+              Get Started
+            </button>
+          </div>
+        </section>
+        <AboutUs />
+      </>
+    );
+  };
+
   return (
-    <div>
+    <div className="app">
       <nav className="navbar">
-        <h1>🌿 Paradise Nursery</h1>
+        <button className="brand-button" onClick={() => setPage("home")}>
+          🌿 Paradise Nursery
+        </button>
 
         <div className="nav-links">
           <button onClick={() => setPage("home")}>Home</button>
-
           <button onClick={() => setPage("plants")}>Plants</button>
-
           <button onClick={() => setPage("cart")}>
             🛒 Cart ({cartCount})
           </button>
         </div>
       </nav>
 
-      {page === "home" && (
-        <section className="hero">
-          <div className="hero-content">
-            <h2>Welcome to Paradise Nursery</h2>
-
-            <p>
-              Bring nature into your home with our beautiful
-              collection of houseplants.
-            </p>
-
-            <button
-              className="get-started"
-              onClick={() => setPage("plants")}
-            >
-              Get Started
-            </button>
-          </div>
-        </section>
-      )}
-
-      {page === "plants" && (
-        <ProductList />
-      )}
-
-      {page === "cart" && (
-        <CartItem />
-      )}
-
-      {page === "home" && (
-        <AboutUs />
-      )}
+      {renderPage()}
     </div>
   );
 }
