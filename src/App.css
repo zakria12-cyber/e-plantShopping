@@ -6,14 +6,16 @@
 
 body {
   font-family: Arial, sans-serif;
-  background: #f4f8f4;
+  background-color: #f4f8f4;
   color: #333;
 }
 
-/* Navbar */
+button {
+  font-family: inherit;
+}
 
 .navbar {
-  background: #176b3a;
+  background-color: #176b3a;
   color: white;
   padding: 18px 7%;
   display: flex;
@@ -21,8 +23,13 @@ body {
   align-items: center;
 }
 
-.navbar h1 {
+.brand-button {
+  background: none;
+  border: none;
+  color: white;
   font-size: 25px;
+  font-weight: bold;
+  cursor: pointer;
 }
 
 .nav-links {
@@ -40,11 +47,9 @@ body {
 }
 
 .nav-links button:hover {
-  background: #0e512b;
+  background-color: #0e512b;
   border-radius: 5px;
 }
-
-/* Landing Page */
 
 .hero {
   min-height: 600px;
@@ -52,25 +57,27 @@ body {
   justify-content: center;
   align-items: center;
   text-align: center;
-
-  background-image:
-    linear-gradient(rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.35)),
-    url("https://images.unsplash.com/photo-1497250681960-ef046c08a56e");
-
+  background-image: linear-gradient(
+      rgba(0, 0, 0, 0.45),
+      rgba(0, 0, 0, 0.45)
+    ),
+    url("https://images.unsplash.com/photo-1497250681960-ef046c08a56e?auto=format&fit=crop&w=1600&q=80");
   background-size: cover;
   background-position: center;
+  background-repeat: no-repeat;
 }
 
 .hero-content {
-  background: rgba(255, 255, 255, 0.9);
+  background-color: rgba(255, 255, 255, 0.92);
   padding: 45px;
   border-radius: 15px;
   max-width: 600px;
+  margin: 20px;
 }
 
 .hero-content h2 {
   color: #176b3a;
-  font-size: 38px;
+  font-size: 42px;
   margin-bottom: 15px;
 }
 
@@ -80,39 +87,41 @@ body {
   line-height: 1.6;
 }
 
-.get-started {
-  background: #176b3a;
+.get-started,
+.plant-card button,
+.cart-summary button {
+  background-color: #176b3a;
   color: white;
   border: none;
   padding: 13px 28px;
   border-radius: 7px;
-  font-size: 17px;
+  font-size: 16px;
   cursor: pointer;
 }
 
-.get-started:hover {
-  background: #0e512b;
+.get-started:hover,
+.plant-card button:hover:not(:disabled),
+.cart-summary button:hover {
+  background-color: #0e512b;
 }
-
-/* About */
 
 .about {
   text-align: center;
-  padding: 50px 15%;
-  background: white;
+  padding: 60px 15%;
+  background-color: white;
 }
 
 .about h2 {
   color: #176b3a;
   margin-bottom: 20px;
+  font-size: 32px;
 }
 
 .about p {
   line-height: 1.7;
-  margin: 10px 0;
+  margin: 15px auto;
+  max-width: 900px;
 }
-
-/* Products */
 
 .products {
   padding: 40px 7%;
@@ -133,12 +142,12 @@ body {
 
 .plant-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 25px;
 }
 
 .plant-card {
-  background: white;
+  background-color: white;
   border-radius: 12px;
   padding: 15px;
   text-align: center;
@@ -163,21 +172,10 @@ body {
   margin-bottom: 15px;
 }
 
-.plant-card button {
-  background: #176b3a;
-  color: white;
-  border: none;
-  padding: 10px 18px;
-  border-radius: 6px;
-  cursor: pointer;
-}
-
 .plant-card button:disabled {
-  background: #999;
+  background-color: #999;
   cursor: not-allowed;
 }
-
-/* Cart */
 
 .cart-page {
   padding: 40px 8%;
@@ -190,7 +188,7 @@ body {
 }
 
 .cart-item {
-  background: white;
+  background-color: white;
   padding: 20px;
   margin-bottom: 20px;
   border-radius: 12px;
@@ -228,7 +226,7 @@ body {
 }
 
 .quantity-controls button {
-  background: #176b3a;
+  background-color: #176b3a;
   color: white;
   border: none;
   padding: 7px 14px;
@@ -237,7 +235,7 @@ body {
 }
 
 .delete-button {
-  background: #d63031;
+  background-color: #d63031;
   color: white;
   border: none;
   padding: 8px 15px;
@@ -246,7 +244,7 @@ body {
 }
 
 .cart-summary {
-  background: white;
+  background-color: white;
   padding: 25px;
   border-radius: 10px;
   text-align: center;
@@ -258,32 +256,10 @@ body {
   color: #176b3a;
 }
 
-.cart-summary button {
-  background: #176b3a;
-  color: white;
-  border: none;
-  padding: 12px 20px;
-  margin: 5px;
-  border-radius: 6px;
-  cursor: pointer;
-}
-
 .empty-cart {
   text-align: center;
   padding: 60px;
 }
-
-.empty-cart button {
-  margin-top: 20px;
-  background: #176b3a;
-  color: white;
-  border: none;
-  padding: 12px 20px;
-  border-radius: 6px;
-  cursor: pointer;
-}
-
-/* Mobile */
 
 @media (max-width: 800px) {
   .navbar {
