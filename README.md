@@ -1,16 +1,47 @@
-# React + Vite
+# Paradise Nursery
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Project Overview
+Paradise Nursery is an online plant shopping application built with React. The application allows users to explore different categories of houseplants, add plants to a shopping cart, update quantities, remove items, and view the total cost of their order.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- Attractive landing page for Paradise Nursery
+- Company information section
+- Background image on the landing page
+- Product listing with multiple plant categories
+- At least 18 plants displayed across three categories
+- Add plants to the shopping cart
+- Cart item counter
+- Increase and decrease item quantities
+- Remove items from the cart
+- Automatic total price calculation
+- Continue Shopping and Checkout buttons
+- State management using Redux Toolkit
 
-## React Compiler
+## Plant Categories
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+1. Air Purifying Plants
+2. Succulents
+3. Tropical Plants
 
-## Expanding the ESLint configuration
+## Technologies Used
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- React
+- Vite
+- Redux Toolkit
+- React Redux
+- JavaScript
+- CSS
+
+## Installation
+
+1. Clone this repository.
+2. Install dependencies using `npm install`.
+3. Start the application using `npm run dev`.
+4. Open the local development URL displayed in your terminal.
+
+## Project Name
+
+**Paradise Nursery - Online Plant Shop**
+
+Paradise Nursery helps plant lovers discover beautiful plants and bring more nature into their homes.
