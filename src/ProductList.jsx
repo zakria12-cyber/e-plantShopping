@@ -25,45 +25,39 @@ const plants = [
 function ProductList() {
   const dispatch = useDispatch();
   const cartItems = useSelector((state) => state.cart.items);
-
-  const cartCount = cartItems.reduce((total, item) => total + item.quantity, 0);
-  const categories = [...new Set(plants.map((plant) => plant.category))];
+  const categories = ["Air Purifying", "Succulents", "Tropical Plants"];
 
   return (
-    <div>
-      <nav className="navbar">
-        <h1>🌿 Paradise Nursery</h1>
-        <div className="nav-links">
-          <a href="/">Home</a>
-          <a href="#plants">Plants</a>
-          <a href="#cart">🛒 Cart ({cartCount})</a>
-        </div>
-      </nav>
+    <section className="products">
+      <h2>Our Plant Collection</h2>
 
-      <section id="plants" className="products">
-        <h2>Our Plants</h2>
-        {categories.map((category) => (
-          <div key={category}>
-            <h3 className="category-title">{category}</h3>
-            <div className="plant-grid">
-              {plants.filter((plant) => plant.category === category).map((plant) => {
+      {categories.map((category) => (
+        <div key={category}>
+          <h3 className="category-title">{category}</h3>
+          <div className="plant-grid">
+            {plants
+              .filter((plant) => plant.category === category)
+              .map((plant) => {
                 const inCart = cartItems.some((item) => item.id === plant.id);
+
                 return (
                   <div className="plant-card" key={plant.id}>
                     <img src={plant.image} alt={plant.name} />
                     <h3>{plant.name}</h3>
                     <p>${plant.price}</p>
-                    <button disabled={inCart} onClick={() => dispatch(addItem(plant))}>
+                    <button
+                      disabled={inCart}
+                      onClick={() => dispatch(addItem(plant))}
+                    >
                       {inCart ? "Added to Cart" : "Add to Cart"}
                     </button>
                   </div>
                 );
               })}
-            </div>
           </div>
-        ))}
-      </section>
-    </div>
+        </div>
+      ))}
+    </section>
   );
 }
 
